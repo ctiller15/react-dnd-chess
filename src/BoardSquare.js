@@ -8,7 +8,7 @@ export default function BoardSquare({ x, y, setKnightPosition, children }) {
 
 	const [{ isOver }, drop] = useDrop({
 		accept: ItemTypes.KNIGHT,
-		drop: () => setKnightPosition[x, y],
+		drop: () => setKnightPosition([x, y]),
 		collect: monitor => ({
 			isOver: !!monitor.isOver(),
 		}),
