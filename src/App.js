@@ -1,25 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
+import Board from './Board';
+import { observe } from './Game';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [knightPosition, setKnightPosition] = useState([0, 0]);
+
+	const rendered = observe((knightPosition) => {
+		return (<div className="App">
+			<Board knightPosition={knightPosition} />
+		</div>);
+	  }
+	);
+
+	return <div className="App">
+		<Board knightPosition={knightPosition} setKnightPosition={setKnightPosition} />
+	</div>;
+
 }
 
 export default App;
